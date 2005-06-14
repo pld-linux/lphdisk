@@ -13,22 +13,23 @@ BuildRequires:	lrmi-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-lphdisk is a linux reimplementation of the PHDISK.EXE (DOS) utility provided
-with most Phoenix NoteBIOS-equipped laptop models.  It will properly format a
-NoteBIOS hibernation partition (type A0) to make it usable by the BIOS for
-suspending to disk, avoiding the need to use buggy and outdated DOS utilities
-to perform this configuration step.
+lphdisk is a linux reimplementation of the PHDISK.EXE (DOS) utility
+provided with most Phoenix NoteBIOS-equipped laptop models. It will
+properly format a NoteBIOS hibernation partition (type A0) to make it
+usable by the BIOS for suspending to disk, avoiding the need to use
+buggy and outdated DOS utilities to perform this configuration step.
 
-This utility is intended to be the Linux equivalent of the DOS-only utility
-"PHDISK.EXE" from Phoenix. This utility prepares and formats the hibernation
-partition for notebook computers that use Phoenix NoteBIOS. Once this partition
-has been prepared, it can be used with the BIOS's APM Suspend-To-Disk feature.
+This utility is intended to be the Linux equivalent of the DOS-only
+utility "PHDISK.EXE" from Phoenix. This utility prepares and formats
+the hibernation partition for notebook computers that use Phoenix
+NoteBIOS. Once this partition has been prepared, it can be used with
+the BIOS's APM Suspend-To-Disk feature.
 
-Note that one does not need this utility to be able to take advantage of
-the Suspend-To-Disk feature of these Phoenix NoteBIOS laptops. Once the
-hibernation partition is prepared, either from the DOS utility PHDISK.EXE that
-Phoenix provides, or lphdisk, it can be used to suspend a machine's memory to
-disk.
+Note that one does not need this utility to be able to take advantage
+of the Suspend-To-Disk feature of these Phoenix NoteBIOS laptops. Once
+the hibernation partition is prepared, either from the DOS utility
+PHDISK.EXE that Phoenix provides, or lphdisk, it can be used to
+suspend a machine's memory to disk.
 
 %prep
 %setup -q
