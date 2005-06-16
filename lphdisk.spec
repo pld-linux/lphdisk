@@ -1,6 +1,7 @@
 # TODO:
 # - make use of external lrmi
 Summary:	Utility for formatting Phoenix NoteBIOS hibernation partitions under Linux
+Summary(pl):	Narzêdzie do formatowania partycji hibernacji Phoenix NoteBIOS pod Linuksem
 Name:		lphdisk
 Version:	0.9.1
 Release:	0.2
@@ -18,25 +19,24 @@ provided with most Phoenix NoteBIOS-equipped laptop models. It will
 properly format a NoteBIOS hibernation partition (type A0) to make it
 usable by the BIOS for suspending to disk, avoiding the need to use
 buggy and outdated DOS utilities to perform this configuration step.
+Once this partition has been prepared, it can be used with the BIOS's
+APM Suspend-To-Disk feature.
 
-This utility is intended to be the Linux equivalent of the DOS-only
-utility "PHDISK.EXE" from Phoenix. This utility prepares and formats
-the hibernation partition for notebook computers that use Phoenix
-NoteBIOS. Once this partition has been prepared, it can be used with
-the BIOS's APM Suspend-To-Disk feature.
-
-Note that one does not need this utility to be able to take advantage
-of the Suspend-To-Disk feature of these Phoenix NoteBIOS laptops. Once
-the hibernation partition is prepared, either from the DOS utility
-PHDISK.EXE that Phoenix provides, or lphdisk, it can be used to
-suspend a machine's memory to disk.
+%description -l pl
+lphdisk to linuksowa reimplementacja dosowego narzêdzia PHDISK.EXE
+dostarczanego z wiêkszo¶ci± modeli laptopów zawieraj±cych Phoenix
+NoteBIOS. Narzêdzie to odpowiednio formatuje partycjê hibernacji
+NoteBIOS (typu A0) czyni±c j± u¿ywaln± dla BIOS-u przy opcji suspend
+to disk - unikaj±c u¿ywania zawieraj±cych b³êdy i przestarza³ych
+narzêdzi dosowych do wykonania tego kroku. Po przygotowaniu partycji
+mo¿na jej u¿ywaæ z opcj± APM Suspend-To-Disk BIOS-u.
 
 %prep
 %setup -q
 
 %build
 %{__make} \
-	CC=%{__cc} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -Wall"
 
 %install
