@@ -10,6 +10,7 @@ Source0:	http://www.procyon.com/~pda/lphdisk/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-build_fix.patch
 URL:		http://www.procyon.com/~pda/lphdisk/
 BuildRequires:	lrmi-devel
+ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
