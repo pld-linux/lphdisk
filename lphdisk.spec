@@ -1,14 +1,13 @@
-# TODO:
-# - make use of external lrmi
 Summary:	Utility for formatting Phoenix NoteBIOS hibernation partitions under Linux
 Summary(pl):	Narzêdzie do formatowania partycji hibernacji Phoenix NoteBIOS pod Linuksem
 Name:		lphdisk
 Version:	0.9.1
-Release:	0.2
+Release:	0.9
 License:	Artistic
 Group:		Applications/System
 Source0:	http://www.procyon.com/~pda/lphdisk/%{name}-%{version}.tar.bz2
 # Source0-md5:	2ba99b08e7816ff3249eaf953fb5dc18
+Patch0:		%{name}-build_fix.patch
 URL:		http://www.procyon.com/~pda/lphdisk/
 BuildRequires:	lrmi-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -33,17 +32,20 @@ mo¿na jej u¿ywaæ z opcj± APM Suspend-To-Disk BIOS-u.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags} -Wall"
+	CFLAGS="%{rpmcflags} -Wall -I/usr/include/lrmi"
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8}
 
 %{__make} install \
-	INSTALL_PREFIX=$RPM_BUILD_ROOT%{_prefix}
+	DESTDIR=$RPM_BUILD_ROOT \
+	PREFIX=%{_prefix}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
