@@ -1,0 +1,110 @@
+--- ./lphdisk.c.org	2002-02-12 12:04:27.000000000 +0100
++++ ./lphdisk.c	2005-06-17 14:54:49.000000000 +0200
+@@ -710,29 +710,30 @@
+ 
+ const char short_opts[] = "hpqdnf";
+ const struct option long_opts[] = {
+-  {"help",      0, 0, 'h'},
+-  {"probeonly", 0, 0, 'p'},
+-  {"quiet",     0, 0, 'q'},
+-  {"debug",     0, 0, 'd'},
+-  {"nowrite",   0, 0, 'n'},
+-  {"force",     0, 0, 'f'},
+-{0,0,0,0}};
+-
+-const char usage_string[] = "\
+-Usage: %1$s [options] [device]
+-Prepare a hibernation partition for APM suspend-to-disk.
+-
+-options:
+-  -h, --help       Display brief usage and option information (this screen)
+-  -p, --probeonly  Only calculate and display required size, do not format
+-  -q, --quiet      Turn off informational messages, useful for scripts
+-  -d, --debug      Turn on (verbose) debugging messages
+-  -n, --nowrite    Do not actually write to the disk
+-  -f, --force      **DANGEROUS**  Format without regard to potential problems
+-
+-'device' should be a raw disk device (not a partition).  The default device
+-is /dev/hda.
+-
++	{"help",      0, 0, 'h'},
++	{"probeonly", 0, 0, 'p'},
++	{"quiet",     0, 0, 'q'},
++	{"debug",     0, 0, 'd'},
++	{"nowrite",   0, 0, 'n'},
++	{"force",     0, 0, 'f'},
++	{0,0,0,0}
++};
++
++const char usage_string[] = 
++"Usage: %1$s [options] [device]\n\
++Prepare a hibernation partition for APM suspend-to-disk.\n\
++\n\
++options:\n\
++  -h, --help       Display brief usage and option information (this screen)\n\
++  -p, --probeonly  Only calculate and display required size, do not format\n\
++  -q, --quiet      Turn off informational messages, useful for scripts\n\
++  -d, --debug      Turn on (verbose) debugging messages\n\
++  -n, --nowrite    Do not actually write to the disk\n\
++  -f, --force      **DANGEROUS**  Format without regard to potential problems\n\
++\n\
++'device' should be a raw disk device (not a partition).  The default device\n\
++is /dev/hda.\n\
++\n\
+ (%2$s)\n\n";
+ 
+ void print_usage (void) {
+--- ./Makefile.org	2002-02-12 10:06:46.000000000 +0100
++++ ./Makefile	2005-06-17 15:19:35.603625528 +0200
+@@ -4,37 +4,32 @@
+ #   lphdisk 0.9.1
+ #
+ 
+-INSTALL_PREFIX = /usr/local
++PREFIX		= /usr/local
++SBINDIR		= $(PREFIX)/sbin
++MANDIR		= $(PREFIX)/share/man/man8
+ 
+-CFLAGS = -g -Wall
+-LIBS =
++CFLAGS		= -g -Wall -I/usr/include/lrmi
++LIBS		= -llrmi
+ 
+-LRMIDIR = lrmi-0.6m
+ 
+ all:       lphdisk
+ 
+-lphdisk:   lphdisk.o lrmi.o
+-	$(CC) $(CFLAGS) -o lphdisk lphdisk.o lrmi.o $(LIBS)
++lphdisk:   lphdisk.o
++	$(CC) $(CFLAGS) -o lphdisk lphdisk.o $(LIBS)
+ 
+-lphdisk.o: lphdisk.c lrmi.h vbe.h
+-
+-lrmi.o:
+-	cd $(LRMIDIR) && $(MAKE) $@
+-	cp $(LRMIDIR)/lrmi.o .
+-
+-%.h: $(LRMIDIR)/%.h
+-	cp $^ $@
++lphdisk.o: lphdisk.c 
+ 
+ install: all
+-	install -m 755 lphdisk $(INSTALL_PREFIX)/sbin
+-	install -m 644 lphdisk.8 $(INSTALL_PREFIX)/man/man8
++	install -m 755 lphdisk $(DESTDIR)$(SBINDIR)
++	install -m 644 lphdisk.8 $(DESTDIR)$(MANDIR)
+ 
+-clean:
+-	cd $(LRMIDIR) && $(MAKE) $@
+-	rm -f *.o lrmi.h vbe.h
+ 
+ distclean: clean
+ 	cd $(LRMIDIR) && $(MAKE) $@
+ 	rm -f lphdisk
+ 
++clean:
++	rm -f *.o lphdisk
++	
++
+ .PHONY: all install clean distclean
