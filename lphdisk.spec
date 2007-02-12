@@ -1,5 +1,5 @@
 Summary:	Utility for formatting Phoenix NoteBIOS hibernation partitions under Linux
-Summary(pl):	Narzêdzie do formatowania partycji hibernacji Phoenix NoteBIOS pod Linuksem
+Summary(pl.UTF-8):   NarzÄ™dzie do formatowania partycji hibernacji Phoenix NoteBIOS pod Linuksem
 Name:		lphdisk
 Version:	0.9.1
 Release:	0.9
@@ -22,14 +22,14 @@ buggy and outdated DOS utilities to perform this configuration step.
 Once this partition has been prepared, it can be used with the BIOS's
 APM Suspend-To-Disk feature.
 
-%description -l pl
-lphdisk to linuksowa reimplementacja dosowego narzêdzia PHDISK.EXE
-dostarczanego z wiêkszo¶ci± modeli laptopów zawieraj±cych Phoenix
-NoteBIOS. Narzêdzie to odpowiednio formatuje partycjê hibernacji
-NoteBIOS (typu A0) czyni±c j± u¿ywaln± dla BIOS-u przy opcji suspend
-to disk - unikaj±c u¿ywania zawieraj±cych b³êdy i przestarza³ych
-narzêdzi dosowych do wykonania tego kroku. Po przygotowaniu partycji
-mo¿na jej u¿ywaæ z opcj± APM Suspend-To-Disk BIOS-u.
+%description -l pl.UTF-8
+lphdisk to linuksowa reimplementacja dosowego narzÄ™dzia PHDISK.EXE
+dostarczanego z wiÄ™kszoÅ›ciÄ… modeli laptopÃ³w zawierajÄ…cych Phoenix
+NoteBIOS. NarzÄ™dzie to odpowiednio formatuje partycjÄ™ hibernacji
+NoteBIOS (typu A0) czyniÄ…c jÄ… uÅ¼ywalnÄ… dla BIOS-u przy opcji suspend
+to disk - unikajÄ…c uÅ¼ywania zawierajÄ…cych bÅ‚Ä™dy i przestarzaÅ‚ych
+narzÄ™dzi dosowych do wykonania tego kroku. Po przygotowaniu partycji
+moÅ¼na jej uÅ¼ywaÄ‡ z opcjÄ… APM Suspend-To-Disk BIOS-u.
 
 %prep
 %setup -q
