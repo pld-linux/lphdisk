@@ -1,5 +1,5 @@
 Summary:	Utility for formatting Phoenix NoteBIOS hibernation partitions under Linux
-Summary(pl.UTF-8):   Narzędzie do formatowania partycji hibernacji Phoenix NoteBIOS pod Linuksem
+Summary(pl.UTF-8):	Narzędzie do formatowania partycji hibernacji Phoenix NoteBIOS pod Linuksem
 Name:		lphdisk
 Version:	0.9.1
 Release:	0.9
